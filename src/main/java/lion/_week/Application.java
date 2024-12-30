@@ -15,7 +15,7 @@ public class Application {
 		String[] strArr1 = str.split(",");
 		String[] strArr2 = str.split(":");
 
-
+		System.out.println("아직 연습용입니다. ㅠㅠ");
 
 
 	}
