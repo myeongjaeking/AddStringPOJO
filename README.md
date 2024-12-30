@@ -1,5 +1,6 @@
 # AddStringPOJO
 
+
 1. 사용자의 문자열 입력 및 구분자 기준으로 숫자 분리 기능 구현
 2. 분리한 각 숫자의 합 기능 구현
 3. CustomSeparator Class의 커스텀 구분자 지정 기능 구현
