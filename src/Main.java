@@ -13,8 +13,10 @@ public class Main {
         while (true){
             String str = sc.next();
             Colon colon1 = new Colon(str);
-            Rest rest1 = new Rest(colon1.getColonChangePlus());
-            SumPlus sumPlus = new SumPlus(rest1.getRestChangePlus());
+            str = colon1.getColonChangePlus();
+            Rest rest1 = new Rest(str);
+            str = rest1.getRestChangePlus();
+            SumPlus sumPlus = new SumPlus(str);
             System.out.println(sumPlus.getSum());
 
         }
