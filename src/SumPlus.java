@@ -8,12 +8,13 @@ public class SumPlus {
         return changeArraySting;
     }
     //문자열을 Integer로 치환 후 덧셈
-    public int sumPlusArrayString (String[] pluses){
+    public int sumPlusArrayString (String[] pluses) throws IllegalAccessError{
+        sum =0;
         for(String plus : pluses){
             try {
                 sum+=Integer.parseInt(plus);
-            }catch (IllegalAccessError e){
-                System.out.println("적절한 구분자가 아닙니다.");
+            }catch (NumberFormatException e){
+               throw new IllegalAccessError("적절한 구분자 또는 숫자가 아닙니다.");
             }
         }
         return sum;

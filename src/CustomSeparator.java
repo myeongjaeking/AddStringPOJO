@@ -3,36 +3,34 @@ public class CustomSeparator implements Separator{
     private String customSeparators="";
 
     private String customChangePlus;
+    private String[] startEndString;
     private int i;
 
     //커스텀 구분자 추출
-    private String customSeparatorExtract(String totalString){
-        if(isStartSeparator(totalString)){
-            for(i=2; i<totalString.length();i++){ //true일 때 "//" index는 0,1이기 떄문에 2부터 시작
+    private void customSeparatorExtract(String totalString){
 
-                if(!isEndSeparator(totalString,i)) customSeparators +=totalString.charAt(i);
-                else break;
-            }
+        newlineCustom(totalString);
+
+        for(i=2; i<startEndString[0].length();i++){ //true일 때 "//" index는 0,1이기 떄문에 2부터 시작
+            startEndString[0].charAt(i);
+            customSeparators += startEndString[0].charAt(i);
         }
 
-        return customSeparators;
+        this.customSeparators=customSeparators;
     }
-
+    //문자열에서 \\n을 \n으로 치환 후 나누어 문자열 배열에 저장
+    private void newlineCustom(String totalString){
+        totalString = totalString.replace("\\n","\n");
+        this.startEndString = totalString.split("\n");
+    }
     //문자열 시작이 "//"인지 참,거짓 반환
     public boolean isStartSeparator(String totalString){
         return totalString.startsWith("//");
     }
 
-    //해당 index에서 '\n'인지 참,거짓 반환
-    public boolean isEndSeparator(String totalString, int i){
-
-        return totalString.charAt(i)=='\\' && totalString.charAt(i+1)=='n';
-    }
-
 
     public CustomSeparator(String totalString){
         this.i=0;
-
         this.customChangePlus = separatorChangePlusString(totalString);
 
     }
@@ -41,8 +39,9 @@ public class CustomSeparator implements Separator{
 
         if(isStartSeparator(totalString)) {
             customSeparatorExtract(totalString);
-            totalString = deleteSeparator(totalString, i);
+            totalString = startEndString[1];
             customChangePlus=totalString.replace(customSeparators,"plus");
+
         }
         else {
             customChangePlus = totalString;
@@ -55,10 +54,5 @@ public class CustomSeparator implements Separator{
         return customChangePlus;
     }
 
-    //커스텀구분자 제거 ex) "//acd\n1acd2acd3acd" -> 1acd2acd3acd
-    public String deleteSeparator(String totalString,int i){
-        totalString = totalString.substring(i+2,totalString.length());
-        return totalString;
-    }
 
 }

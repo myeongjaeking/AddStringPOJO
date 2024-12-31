@@ -12,7 +12,6 @@ public class Main {
             String str = sc.next();
             CustomSeparator customSeparator1 = new CustomSeparator(str);
             str = customSeparator1.getCustomChangePlus();
-            System.out.println(customSeparator1.getCustomChangePlus());
             Colon colon1 = new Colon(str);
             str = colon1.getColonChangePlus();
             Rest rest1 = new Rest(str);
