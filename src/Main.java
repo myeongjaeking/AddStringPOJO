@@ -4,14 +4,15 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-//        String test = "1,2,3:4";
-//        Colon colon = new Colon(test);
-//        Rest rest = new Rest(colon.getColonNotString());
-//        System.out.println("Rest Sum :"+rest.getSum());
-//        System.out.println("Colon Sum :"+colon.getSum());
+
+
+
         Scanner sc = new Scanner(System.in);
         while (true){
             String str = sc.next();
+            CustomSeparator customSeparator1 = new CustomSeparator(str);
+            str = customSeparator1.getCustomChangePlus();
+            System.out.println(customSeparator1.getCustomChangePlus());
             Colon colon1 = new Colon(str);
             str = colon1.getColonChangePlus();
             Rest rest1 = new Rest(str);
@@ -20,5 +21,6 @@ public class Main {
             System.out.println(sumPlus.getSum());
 
         }
+
     }
 }
