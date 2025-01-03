@@ -1,7 +1,5 @@
 package inputOutput;
 
-import verification.Verification;
-
 import java.util.Scanner;
 
 public class InputString {

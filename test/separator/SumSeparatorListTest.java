@@ -10,7 +10,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SumSeparatorListTest {
-    private SumSeparatorList sumSeparatorList = new SumSeparatorList();
+    private FindCustomSeparator findCustomSeparator = new FindCustomSeparator();
+    private SumSeparatorList sumSeparatorList = new SumSeparatorList(findCustomSeparator);
     public String customSeparatorFind(String input) throws CustomSeparatorNoNewLineException {
         int customSeparatorFirstLength = SeparatorEnum.CUSTOM_SEPARATOR_FIRST.getSeparator().length();
         int endIndex = input.indexOf(SeparatorEnum.CUSTOM_SEPARATOR_NEWLINE.getSeparator());

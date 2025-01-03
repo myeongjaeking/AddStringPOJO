@@ -3,9 +3,10 @@ import exception.CustomSeparatorNoNewLineException;
 import exception.CustomSeparatorNumberException;
 import exception.InputStringBlacnkException;
 import inputOutput.InputString;
+import separator.FindCustomSeparator;
 import separator.SumSeparatorList;
 import sum.SeparatorSumCalculate;
-import verification.Verification;
+import verification.VerificationInput;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -14,14 +15,17 @@ public class Main {
 
 
         InputString inputString = new InputString();
-
-        SumSeparatorList sumSeparatorList = new SumSeparatorList();
+        FindCustomSeparator findCustomSeparator = new FindCustomSeparator();
+        SumSeparatorList sumSeparatorList = new SumSeparatorList(findCustomSeparator);
         SeparatorSumCalculate separatorCalculate = new SeparatorSumCalculate();
-        Verification verification = new Verification(sumSeparatorList);
-        while (true){
+        VerificationInput verification = new VerificationInput();
+
+        while (true) {
+
             String input = inputString.getString();
             verification.verificationString(input);
-            separatorCalculate.separatorSumCalculate(sumSeparatorList.getSeparatorList(),input);
+            sumSeparatorList.customSeparatorAddSumSeparatorList(input);
+            separatorCalculate.separatorSumCalculate(sumSeparatorList.getSeparatorList(), input);
             System.out.println(separatorCalculate.sumCalculate());
 
         }
