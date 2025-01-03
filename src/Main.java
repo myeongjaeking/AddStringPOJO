@@ -1,23 +1,32 @@
-import java.util.Scanner;
+import exception.CustomSeparatorEmptyException;
+import exception.CustomSeparatorNoNewLineException;
+import exception.CustomSeparatorNumberException;
+import exception.InputStringBlacnkException;
+import inputOutput.InputString;
+import separator.FindCustomSeparator;
+import separator.SumSeparatorList;
+import sum.SeparatorSumCalculate;
+import verification.VerificationInput;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CustomSeparatorNumberException, CustomSeparatorNoNewLineException, CustomSeparatorEmptyException, InputStringBlacnkException {
 
 
+        InputString inputString = new InputString();
+        FindCustomSeparator findCustomSeparator = new FindCustomSeparator();
+        SumSeparatorList sumSeparatorList = new SumSeparatorList(findCustomSeparator);
+        SeparatorSumCalculate separatorCalculate = new SeparatorSumCalculate();
+        VerificationInput verification = new VerificationInput();
 
-        Scanner sc = new Scanner(System.in);
-        while (true){
-            String str = sc.next();
-            CustomSeparator customSeparator1 = new CustomSeparator(str);
-            str = customSeparator1.getCustomChangePlus();
-            Colon colon1 = new Colon(str);
-            str = colon1.getColonChangePlus();
-            Rest rest1 = new Rest(str);
-            str = rest1.getRestChangePlus();
-            SumPlus sumPlus = new SumPlus(str);
-            System.out.println(sumPlus.getSum());
+        while (true) {
+
+            String input = inputString.getString();
+            verification.verificationString(input);
+            sumSeparatorList.customSeparatorAddSumSeparatorList(input);
+            separatorCalculate.separatorSumCalculate(sumSeparatorList.getSeparatorList(), input);
+            System.out.println(separatorCalculate.sumCalculate());
 
         }
 
